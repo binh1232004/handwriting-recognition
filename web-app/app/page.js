@@ -3,6 +3,7 @@ import { Input, Upload } from "antd";
 import { FileMarkdownOutlined, UploadOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 export default function Home() {
   const [pathVault, setPathVault] = useState(undefined);
   const handlePathVaultChange = (e) => {
@@ -12,8 +13,11 @@ export default function Home() {
     
   }
   return (
-  <div className="w-full h-[100vh] flex flex-col justify-center items-center" 
-     style={{ backgroundImage: "url('http://localhost:3000/background.jpg')", backgroundSize: "cover" }}>
+  <div className="w-full h-[100vh] flex flex-col justify-center items-center">
+    <Image 
+      src="/background.jpg"
+      fill={true}
+    />
     <form className="flex flex-col rounded space-y-6 sm:w-1/2">
       <Upload maxCount={1} className="w-full">
         <Button icon={<UploadOutlined/>}>Click to upload image (Max: 10)</Button>

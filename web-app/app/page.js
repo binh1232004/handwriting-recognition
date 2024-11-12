@@ -1,28 +1,31 @@
+'use client'
 import { Input, Upload } from "antd";
 import { FileMarkdownOutlined, UploadOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-import fs from 'fs';
-import path from 'path';
+import { useEffect, useState } from "react";
 export default function Home() {
-  const handleButtonClick = (obsidianVaultPath) => {
-    const content = fs.readFileSync(sourcePath, 'utf8');
-
-    const fileName = path.basename(sourcePath);
-
-    const destPath = path.join(obsidianVaultPath, fileName);
-
-    fs.writeFileSync(destPath, content);
-
+  const [pathVault, setPathVault] = useState(undefined);
+  const handlePathVaultChange = (e) => {
+    setPathVault(e.target.value);
+  }
+  const handleButtonClick = () => {
+    
   }
   return (
-<div className="w-full h-[100vh] flex flex-col justify-center items-center">
-    <form className="flex flex-col p-20 bg-gray-300 rounded space-y-3">
+  <div className="w-full h-[100vh] flex flex-col justify-center items-center" 
+     style={{ backgroundImage: "url('http://localhost:3000/background.jpg')", backgroundSize: "cover" }}>
+    <form className="flex flex-col rounded space-y-6 sm:w-1/2">
       <Upload maxCount={1}>
         <Button icon={<UploadOutlined/>}>Click to upload image (Max: 1)</Button>
       </Upload>
-      <Input size="large" placeholder="" prefix={<FileMarkdownOutlined />} className=""/>
-      <Button type="primary" >Save to your obsidian vault</Button>
+      <Input 
+        size="large" 
+        placeholder="Enter your path" 
+        prefix={<FileMarkdownOutlined />} 
+        onChange={handlePathVaultChange}
+      />
+      <Button type="primary" onClick={handleButtonClick}>Save to your obsidian vault</Button>
     </form>
-</div>
+  </div>
   );
 }

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.1",
+    "@google/generative-ai": "^0.21.0",
     "antd": "^5.22.0",
     "jszip": "^3.10.1",
     "next": "14.2.17",
